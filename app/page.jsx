@@ -9,25 +9,17 @@ import orderData from "../order.json";
 export default function Home() {
   const [todos, setTodos] = useState([]);
   const [inputText, setInputText] = useState("");
-  const [totalPrice, setTotalPrice] = useState(0);
   const todoListRef = useRef(null);
   const [selectedStatus, setSelectedStatus] = useState("Beklemede");
   const [selectedDate, setSelectedDate] = useState("2023-09-19");
-  const [displayText, setDisplayText] = useState("");
 
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
   };
 
-  const handleButtonClick = () => {
-    console.log("Tarih değiştirildi:", selectedDate);
-    setDisplayText(selectedDate);
-  };
-
   const handleAddTodo = () => {
-    if (inputText.trim() !== "") {
-      // mesajda bıkarılan fazla boşlukları siler
-      setTodos([...todos, { id: Date.now(), text: inputText }]); // zamana göre eşsiz id verir
+    if (inputText.trim() !== "") { 
+      setTodos([...todos, { id: Date.now(), text: inputText, date: selectedDate }]);
       setInputText("");
     }
   };
@@ -42,16 +34,9 @@ export default function Home() {
     }
   }, [todos]);
 
-  useEffect(() => {
-    const total = orderData.order.products.reduce((sum, product) => {
-      return sum + parseFloat(product.total_price.replace(",", "."));
-    }, 0);
-    setTotalPrice(total.toFixed(2));
-  }, []);
-
   const { order } = orderData;
 
-  const totalOrderPrice = order.products // order objesinin içinde bulunan products arrayindeki total_price objelerinin toplamı
+  const totalOrderPrice = order.products
     .reduce((total, product) => {
       return total + parseFloat(product.total_price.replace(",", "."));
     }, 0)
@@ -63,7 +48,7 @@ export default function Home() {
 
   const handleUpdate = () => {
     const newMessage = `Sipariş durumu güncellendi: ${selectedStatus}`;
-    setTodos([...todos, { id: Date.now(), text: newMessage }]);
+    setTodos([...todos, { id: Date.now(), text: newMessage, date: selectedDate }]);
   };
 
   return (
@@ -136,7 +121,6 @@ export default function Home() {
                     type="date"
                     id="created_at"
                     name="created_at"
-                    defaultValue="2023-09-19"
                     value={selectedDate}
                     onChange={handleDateChange}
                     className="block w-full px-2 py-1 border border-gray-400 rounded-md"
@@ -166,7 +150,6 @@ export default function Home() {
                     <select
                       id="status"
                       name="status"
-                      defaultValue="Başarısız"
                       className="block w-full p-2 border rounded-md border-gray-400"
                     >
                       <option value="customer">
@@ -179,11 +162,8 @@ export default function Home() {
               </div>
               <div className="pr-5">
                 <button
-                  className="bg-mavi p-1.5 rounded text-white  hover:text-mavi border border-maviease-in duration-200 hover:bg-opacity-15"
-                  onClick={() => {
-                    handleUpdate();
-                    handleButtonClick();
-                  }}
+                  className="bg-mavi p-1.5 rounded text-white  hover:border-mavi hover:text-mavi border border-maviease-in duration-200 hover:bg-opacity-15"
+                  onClick={handleUpdate}
                 >
                   Güncelle
                 </button>
@@ -192,7 +172,6 @@ export default function Home() {
           </div>
         </main>
         <aside className="right">
-          {/* ana div */}
           <div
             className="border"
             style={{
@@ -201,8 +180,7 @@ export default function Home() {
               height: "726px",
             }}
           >
-            {/* başlık divi */}
-            <div className="container p-2 font-bold border">
+            <div className="container p-2 font-bold border border-l-0">
               <div>Sipariş notları</div>
               <div className="flex items-center gap-2 ">
                 <div>
@@ -222,7 +200,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            {/* mesajlar blümünü içeren div */}
             <div
               className="border p-2"
               ref={todoListRef}
@@ -235,11 +212,11 @@ export default function Home() {
                       <div>PAYTR BİLDİRİMİ - Ödeme Kabul Edildi</div>
                       <div className="flex">
                         <div>Toplam Ödenen:</div>
-                        <div className=" pl-1">₺{totalPrice}</div>
+                        <div className=" pl-1">₺{totalOrderPrice}</div>
                       </div>
                       <div className="flex">
                         <div>Ödenen:</div>
-                        <div className=" pl-1">₺{totalPrice}</div>
+                        <div className=" pl-1">₺{totalOrderPrice}</div>
                       </div>
                       <div className="flex">
                         <div>Taksit Sayısı:</div>
@@ -247,7 +224,7 @@ export default function Home() {
                           {orderData.order.paytr[0].single_payment}
                         </div>
                       </div>
-                      <div >
+                      <div>
                         <div>PayTR Sipariş Numarası:</div>
                         <div className="text-blue-600 underline">
                           {orderData.order.paytr[0].number}
@@ -264,7 +241,7 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="flex">
-                      <div className="text-gray-600 text-xs flex justify-start px-3">{displayText}</div>
+                      <div className="text-gray-600 text-xs flex justify-start px-3">{todo.date}</div>
                       <div>
                         <button
                           className="text-red-600 text-xs flex justify-start"
@@ -278,7 +255,6 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            {/* mesaj işlemlerinin yapıldığı div */}
             <div className="mx-4 mt-10">
               <div className="flex gap-8">
                 <div>

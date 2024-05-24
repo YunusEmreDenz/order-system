@@ -13,7 +13,7 @@ module.exports = {
         gri:"#bfbdbd",
         kırmızı:"#d7cad3",
         admin_notu:"#efefee",
-        border:"#6f6a6c",
+        border_color:"#6f6a6c",
         yeşil:"#E6FBD3",
       }
     },

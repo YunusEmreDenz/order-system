@@ -47,23 +47,6 @@
                 "single_payment":"Tek Çekim",
                 "number":"1696253504PAYTRWOO2227"
             }
-        ],
-        "notes":[
-            {
-                "title":"",
-                "created_at":"tarih",
-                "is_admin":"true"
-            },
-            {
-                "title":"title",
-                "created_at":"tarih",
-                "is_admin":"true"
-            },
-            {
-                "title":"title",
-                "created_at":"tarih",
-                "is_admin":"true"
-            }
         ]
     }
 }

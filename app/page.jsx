@@ -7,9 +7,9 @@ import Footer from "@/components/Footer";
 import orderData from "../order.json";
 
 export default function Home() {
-  const [todos, setTodos] = useState([]);
+  const [notes, setNotes] = useState([]);
   const [inputText, setInputText] = useState("");
-  const todoListRef = useRef(null);
+  const noteListRef = useRef(null);
   const [selectedStatus, setSelectedStatus] = useState("Beklemede");
   const [selectedDate, setSelectedDate] = useState("2023-09-19");
 
@@ -17,22 +17,22 @@ export default function Home() {
     setSelectedDate(event.target.value);
   };
 
-  const handleAddTodo = () => {
+  const handleAddNote = () => {
     if (inputText.trim() !== "") { 
-      setTodos([...todos, { id: Date.now(), text: inputText, date: selectedDate }]);
+      setNotes([...notes, { id: Date.now(), text: inputText, date: selectedDate }]);
       setInputText("");
     }
   };
 
-  const handleDeleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+  const handleDeleteNote = (id) => {
+    setNotes(notes.filter((note) => note.id !== id));
   };
 
   useEffect(() => {
-    if (todoListRef.current) {
-      todoListRef.current.scrollTop = todoListRef.current.scrollHeight;
+    if (noteListRef.current) {
+      noteListRef.current.scrollTop = noteListRef.current.scrollHeight;
     }
-  }, [todos]);
+  }, [notes]);
 
   const { order } = orderData;
 
@@ -48,7 +48,7 @@ export default function Home() {
 
   const handleUpdate = () => {
     const newMessage = `Sipariş durumu güncellendi: ${selectedStatus}`;
-    setTodos([...todos, { id: Date.now(), text: newMessage, date: selectedDate }]);
+    setNotes([...notes, { id: Date.now(), text: newMessage, date: selectedDate }]);
   };
 
   return (
@@ -202,7 +202,7 @@ export default function Home() {
             </div>
             <div
               className="border p-2"
-              ref={todoListRef}
+              ref={noteListRef}
               style={{ maxHeight: "550px", overflowY: "auto", flex: "1" }}
             >
               <ul>
@@ -233,19 +233,19 @@ export default function Home() {
                     </div>
                   </div>
                 </li>
-                {todos.map((todo) => (
-                  <li key={todo.id}>
+                {notes.map((note) => (
+                  <li key={note.id}>
                     <div className=" flex my-1">
                       <div className="bg-kırmızı rounded-sm w-full text-left px-3 py-4">
-                        {todo.text}
+                        {note.text}
                       </div>
                     </div>
                     <div className="flex">
-                      <div className="text-gray-600 text-xs flex justify-start px-3">{todo.date}</div>
+                      <div className="text-gray-600 text-xs flex justify-start px-3">{note.date}</div>
                       <div>
                         <button
                           className="text-red-600 text-xs flex justify-start"
-                          onClick={() => handleDeleteTodo(todo.id)}
+                          onClick={() => handleDeleteNote(note.id)}
                         >
                           Notu sil
                         </button>
@@ -287,7 +287,7 @@ export default function Home() {
               </select>
               <button
                 className=" border-mavi border border-solid p-2 rounded text-mavi bg-mavi bg-opacity-15 hover:font-medium"
-                onClick={handleAddTodo}
+                onClick={handleAddNote}
               >
                 Ekle
               </button>

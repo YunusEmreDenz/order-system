@@ -1,0 +1,69 @@
+{
+    "order":{
+        "id":"746962",
+        "authorized_name":"Ahmet Hakan",
+        "company_name":"Hakan Kitap Evi",
+        "company_logo":"URL",
+        "phone":"+90 553 670 59 97",
+        "email":"ahmetemin@gmail.com",
+        "address":"Atatürk Mah. Yılmaz Cad. No:36 kat:4 daire:12 Beylikdüzü / İSTANBUL",
+        "status":"Hazırlanıyor.",
+        "created_at":"19.09.2023",
+        "customer_name":"Ahmet Emin Demir",
+        "customer_id":"734",
+        "products":[
+            {
+                "name":"3.SINIF HAYAT BİLGİSİ ÖĞRENİYORUM",
+                "image":"https://caliskanari.com/wp-content/uploads/2022/11/YY-07.png.webp",
+                "price":"55,00",
+                "quantity":"11",
+                "total_price":"605,00"
+            },
+            {
+                "name":"3.SINIF MATEMATİK ÖĞRENİYORUM (1.DÖNEM)",
+                "image":"https://caliskanari.com/wp-content/uploads/2022/11/YY-09.png.webp",
+                "price":"75,00",
+                "quantity":"11",
+                "total_price":"825,00"
+            },
+            {
+                "name":"3.SINIF MATEMATİK ÖĞRENİYORUM (2.DÖNEM)",
+                "image":"https://caliskanari.com/wp-content/uploads/2022/11/YY-09.png.webp",
+                "price":"75,00",
+                "quantity":"11",
+                "total_price":"825,00"
+            },
+            {
+                "name":"3.SINIF TÜRKÇE ÖĞRENİYORUM",
+                "image":"https://caliskanari.com/wp-content/uploads/2022/11/YY-10.png.webp",
+                "price":"120,00",
+                "quantity":"11",
+                "total_price":"1320,00"
+            }
+        ],
+        "shipping_fee":"0,00",
+        "paytr":[
+            {
+                "single_payment":"Tek Çekim",
+                "number":"1696253504PAYTRWOO2227"
+            }
+        ],
+        "notes":[
+            {
+                "title":"",
+                "created_at":"tarih",
+                "is_admin":"true"
+            },
+            {
+                "title":"title",
+                "created_at":"tarih",
+                "is_admin":"true"
+            },
+            {
+                "title":"title",
+                "created_at":"tarih",
+                "is_admin":"true"
+            }
+        ]
+    }
+}

@@ -113,7 +113,7 @@ export default function Home() {
             </div>
           </div>
           <h1 className="text-2xl font-bold bg-siyah text-white w-full mt-1 p-2 italic text-left">
-            Sipariş Detayları
+            Sipariş Durumunu Güncelle
           </h1>
 
           <div>

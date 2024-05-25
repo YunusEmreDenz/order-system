@@ -10,8 +10,9 @@ export default function Home() {
   const [notes, setNotes] = useState([]);
   const [inputText, setInputText] = useState("");
   const noteListRef = useRef(null);
-  const [selectedStatus, setSelectedStatus] = useState("Beklemede");
   const [selectedDate, setSelectedDate] = useState("2023-09-19");
+  const [selectedStatus, setSelectedStatus] = useState("");
+  const [displayValue, setDisplayValue] = useState("Beklemede");
 
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
@@ -46,6 +47,10 @@ export default function Home() {
     setSelectedStatus(e.target.value);
   };
 
+  const handleUpdateStatus = () => {
+    setDisplayValue(selectedStatus);
+};
+
   const handleUpdate = () => {
     const newMessage = `Sipariş durumu güncellendi: ${selectedStatus}`;
     setNotes([...notes, { id: Date.now(), text: newMessage, date: selectedDate }]);
@@ -78,7 +83,7 @@ export default function Home() {
               </div>
               <div className="grid-item">
                 Sipariş Durum:
-                <p className="text-white not-italic pl-1"> {selectedStatus}</p>
+                <p className="text-white not-italic pl-1"> {displayValue}</p>
               </div>
             </div>
           </div>
@@ -163,7 +168,7 @@ export default function Home() {
               <div className="pr-5">
                 <button
                   className="bg-mavi p-1.5 rounded text-white  hover:border-mavi hover:text-mavi border border-maviease-in duration-200 hover:bg-opacity-15"
-                  onClick={handleUpdate}
+                  onClick={()=>{handleUpdateStatus();handleUpdate()}}
                 >
                   Güncelle
                 </button>

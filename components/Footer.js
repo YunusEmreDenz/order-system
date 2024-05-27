@@ -53,26 +53,32 @@ const ProductList = ({ products }) => {
           </tbody>
         </table>
       </div>
-      <div className="border p-5 bg-white">
-        <div className="flex items-center">
-          <div>
-            <FaTruckMoving />
+      <div className="border w-full  bg-white">
+        <div className="flex justify-between my-8">
+          <div className="flex">
+            <div className="text-gray-400 text-center items-center justify-center flex w-20 ">
+              <FaTruckMoving className="w-10" />
+            </div>
+            <div className="text-gray-400 text-center items-center flex ">
+              Ücretsiz Kargo
+            </div>
           </div>
-          <div className="container mx-5 pb">
-            <div className="mx-2">Ücretsiz kargo</div>
-            <div className="">₺{order.shipping_fee}</div>
+          <div className="text-gray-400 text-center items-center justify-center flex mr-14">
+            ₺{order.shipping_fee}
           </div>
         </div>
-        <div className="flex overflow-x-auto">
-          <div className=" font-bold">Ürünler:</div>
-          <div className="flex  justify-start">{productDescriptions}</div>
+        <div className="flex">
+          <div className="flex ml-20">
+            <p className="font-bold">Ürünler:</p>
+            <p className="px-8 w-7/12 text-left mb-8">{productDescriptions}</p>
+          </div>
         </div>
       </div>
-      <div className="m-10">
+      <div className="mx-12 my-10">
         <div className="flex justify-end">
           <table className="text-right flex ">
             <thead>
-              <tr className="">
+              <tr>
                 <td className="pr-4 mt-2">Öğe alt toplamı:</td>
                 <td>₺{totalPrice.toFixed(2)}</td>
               </tr>

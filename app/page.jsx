@@ -51,11 +51,13 @@ export default function Home() {
   };
 
   const handleUpdateStatus = () => {
-    setDisplayValue(selectedStatus);
+    if (selectedStatus) {
+      setDisplayValue(selectedStatus);
+    }
   };
 
   const handleUpdate = () => {
-    const newMessage = `Sipariş durumu güncellendi: ${selectedStatus}`;
+    const newMessage = `Sipariş durumu güncellendi: ${selectedStatus || displayValue}`;
     setNotes([
       ...notes,
       { id: Date.now(), text: newMessage, date: selectedDate },

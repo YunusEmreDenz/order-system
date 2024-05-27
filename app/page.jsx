@@ -13,10 +13,9 @@ export default function Home() {
   const [selectedDate, setSelectedDate] = useState("2023-09-19");
   const [selectedStatus, setSelectedStatus] = useState("");
   const [displayValue, setDisplayValue] = useState("Beklemede");
+  const [displayDate, setDisplayDate] = useState("2023-09-19");
 
-  const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
-  };
+
 
   const handleAddNote = () => {
     if (inputText.trim() !== "") {
@@ -56,6 +55,16 @@ export default function Home() {
     }
   };
 
+  const handleDateChange = (event) => {
+    setSelectedDate(event.target.value);
+  };
+
+  const handleUpdateDate=()=>{
+    if(selectedDate){
+      setDisplayDate(selectedDate)
+    }
+  }
+
   const handleUpdate = () => {
     const newMessage = `Sipariş durumu güncellendi: ${selectedStatus || displayValue}`;
     setNotes([
@@ -79,7 +88,7 @@ export default function Home() {
             <div className="grid-container">
               <div className="grid-item">
                 Sipariş Tarih:
-                <p className="text-white not-italic pl-1">{order.created_at}</p>
+                <p className="text-white not-italic pl-1">{displayDate}</p>
               </div>
               <div className="grid-item">
                 Sipariş Tutar:
@@ -198,6 +207,7 @@ export default function Home() {
                   className="bg-mavi p-1.5 rounded text-white  hover:border-mavi hover:text-mavi border border-maviease-in duration-200 hover:bg-opacity-15"
                   onClick={() => {
                     handleUpdateStatus();
+                    handleUpdateDate()
                     handleUpdate();
                   }}
                 >

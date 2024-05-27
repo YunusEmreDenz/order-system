@@ -34,7 +34,7 @@ const ProductList = ({ products }) => {
           </thead>
           <tbody>
             {products.map((product, index) => (
-              <tr key={index} className="">
+              <tr key={index}>
                 <td className=" text-center">
                   <img
                     src={product.image}
@@ -53,7 +53,7 @@ const ProductList = ({ products }) => {
           </tbody>
         </table>
       </div>
-      <div className="border w-full  bg-white">
+      <div className="border w-full  mt-2 bg-white">
         <div className="flex justify-between my-8">
           <div className="flex">
             <div className="text-gray-400 text-center items-center justify-center flex w-20 ">

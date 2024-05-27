@@ -1,26 +1,9 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import orderData from "../order.json";
 import Link from "next/link";
 import { FaTruckMoving } from "react-icons/fa";
-
-const Product = ({ name, image, price, quantity, total_price }) => (
-  <div className="bg-white py-4">
-    <div className="container">
-      <div className="px-5 flex items-center">
-        <img src={image} alt={name} width="50" className="border border-solid" />
-        <div className="ml-4 text-blue-600 underline">
-          <Link href="/">{name}</Link>
-        </div>
-      </div>
-      <div className="flex space-x-3 items-center px-20 gap-6">
-        <div className="px-1">₺{price}</div>
-        <div className="px-3">{quantity}x</div>
-        <div>₺{total_price}</div>
-      </div>
-    </div>
-  </div>
-);
 
 const ProductList = ({ products }) => {
   const totalPrice = products.reduce((total, product) => {
@@ -34,23 +17,42 @@ const ProductList = ({ products }) => {
     .join(", ");
 
   const order = orderData.order;
-  const totalPriceWithShipping = totalPrice + parseFloat(order.shipping_fee) // öğe alt toplamı ve gönderim bedelinin toplamını hesaplamak için kullandım.
+  const totalPriceWithShipping = totalPrice + parseFloat(order.shipping_fee); // öğe alt toplamı ve gönderim bedelinin toplamını hesaplamak için kullandım.
 
   return (
     <div className="border border-solid bg-yeşil">
-      <div className="border">
-        <div className="container">
-          <div className="px-5 text-gray-400">Ürün</div>
-          <div className="flex space-x-3 gap-6 footer-responsive">
-            <div className="text-gray-400">Maliyet</div>
-            <div className="text-gray-400">Miktar</div>
-            <div className="text-gray-400">Toplam</div>
-          </div>
-        </div>
+      <div className="overflow-x-auto bg-white">
+        <table className="border w-full min-w-[46rem]">
+          <thead>
+            <tr className="border flex-row items-center bg-yeşil">
+              <td className="text-gray-400 text-center w-20">Ürün</td>
+              <td className="text-gray-400 text-center "></td>
+              <td className="text-gray-400 text-center ">Maliyet</td>
+              <td className="text-gray-400 text-center ">Miktar</td>
+              <td className="text-gray-400 text-center ">Toplam</td>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((product, index) => (
+              <tr key={index} className="">
+                <td className=" text-center">
+                  <img
+                    src={product.image}
+                    width="50px"
+                    className="border m-4"
+                  />
+                </td>
+                <td className=" text-left text-blue-600 underline">
+                  <Link href="/">{product.name}</Link>
+                </td>
+                <td className=" text-center">{product.price}</td>
+                <td className=" text-center">{product.quantity}x</td>
+                <td className=" text-center">{product.total_price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-      {products.map((product, index) => (
-        <Product key={index} {...product} />
-      ))}
       <div className="border p-5 bg-white">
         <div className="flex items-center">
           <div className="ml-5">
@@ -61,9 +63,9 @@ const ProductList = ({ products }) => {
             <div className="px-10">₺{order.shipping_fee}</div>
           </div>
         </div>
-        <div className="flex">
+        <div className="flex overflow-x-auto">
           <div className="ml-16 font-bold">Ürünler:</div>
-          <div className="flex ml-12 pr-80">{productDescriptions}</div>
+          <div className="flex  justify-start">{productDescriptions}</div>
         </div>
       </div>
       <div className="mt-3 p-5 text-right">

@@ -19,8 +19,11 @@ export default function Home() {
   };
 
   const handleAddNote = () => {
-    if (inputText.trim() !== "") { 
-      setNotes([...notes, { id: Date.now(), text: inputText, date: selectedDate }]);
+    if (inputText.trim() !== "") {
+      setNotes([
+        ...notes,
+        { id: Date.now(), text: inputText, date: selectedDate },
+      ]);
       setInputText("");
     }
   };
@@ -49,11 +52,14 @@ export default function Home() {
 
   const handleUpdateStatus = () => {
     setDisplayValue(selectedStatus);
-};
+  };
 
   const handleUpdate = () => {
     const newMessage = `Sipariş durumu güncellendi: ${selectedStatus}`;
-    setNotes([...notes, { id: Date.now(), text: newMessage, date: selectedDate }]);
+    setNotes([
+      ...notes,
+      { id: Date.now(), text: newMessage, date: selectedDate },
+    ]);
   };
 
   return (
@@ -92,24 +98,44 @@ export default function Home() {
           </h1>
           <div className="details-container">
             <div className="detail-item">
-              <span className="label">Yetkili İsim:</span>
-              <span className="value">{order.authorized_name}</span>
+              <div>
+                <p className="label">Yetkili İsim:</p>
+              </div>
+              <div>
+                <p className="value">{order.authorized_name}</p>
+              </div>
             </div>
             <div className="detail-item">
-              <span className="label">Firma İsmi:</span>
-              <span className="value">{order.company_name}</span>
+              <div>
+                <p className="label">Firma İsmi:</p>
+              </div>
+              <div>
+                <p className="value">{order.company_name}</p>
+              </div>
             </div>
             <div className="detail-item">
-              <span className="label">Telefon:</span>
-              <span className="value">{order.phone}</span>
+              <div>
+                <p className="label">Telefon:</p>
+              </div>
+              <div>
+                <p className="value">{order.phone}</p>
+              </div>
             </div>
             <div className="detail-item">
-              <span className="label">E-mail:</span>
-              <span className="value">{order.email}</span>
+              <div>
+                <p className="label">E-mail:</p>
+              </div>
+              <div>
+                <p className="value">{order.email}</p>
+              </div>
             </div>
             <div className="detail-item">
-              <span className="label">Adres:</span>
-              <span className="value">{order.address}</span>
+              <div>
+                <p className="label">Adres:</p>
+              </div>
+              <div>
+                <p className="value">{order.address}</p>
+              </div>
             </div>
           </div>
           <h1 className="text-2xl font-bold bg-siyah text-white w-full mt-1 p-2 italic text-left">
@@ -168,7 +194,10 @@ export default function Home() {
               <div className="pr-5">
                 <button
                   className="bg-mavi p-1.5 rounded text-white  hover:border-mavi hover:text-mavi border border-maviease-in duration-200 hover:bg-opacity-15"
-                  onClick={()=>{handleUpdateStatus();handleUpdate()}}
+                  onClick={() => {
+                    handleUpdateStatus();
+                    handleUpdate();
+                  }}
                 >
                   Güncelle
                 </button>
@@ -246,7 +275,9 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="flex">
-                      <div className="text-gray-600 text-xs flex justify-start px-3">{note.date}</div>
+                      <div className="text-gray-600 text-xs flex justify-start px-3">
+                        {note.date}
+                      </div>
                       <div>
                         <button
                           className="text-red-600 text-xs flex justify-start"

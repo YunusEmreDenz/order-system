@@ -82,7 +82,8 @@ footer {
 }
 
 .detail-item .label {
-  @apply font-bold w-28 text-center px-2 bg-siyah text-white italic mr-3 rounded-e-md
+  @apply font-bold min-w-32 text-center px-2 bg-siyah text-white italic mr-3 rounded-e-md
+  
 }
 
 .detail-item .value {

@@ -55,31 +55,37 @@ const ProductList = ({ products }) => {
       </div>
       <div className="border p-5 bg-white">
         <div className="flex items-center">
-          <div className="ml-5">
+          <div>
             <FaTruckMoving />
           </div>
           <div className="container mx-5 pb">
             <div className="mx-2">Ücretsiz kargo</div>
-            <div className="px-10">₺{order.shipping_fee}</div>
+            <div className="">₺{order.shipping_fee}</div>
           </div>
         </div>
         <div className="flex overflow-x-auto">
-          <div className="ml-16 font-bold">Ürünler:</div>
+          <div className=" font-bold">Ürünler:</div>
           <div className="flex  justify-start">{productDescriptions}</div>
         </div>
       </div>
-      <div className="mt-3 p-5 text-right">
+      <div className="m-10">
         <div className="flex justify-end">
-          <div className="pr-20">Öğe alt toplamı:</div>
-          <div>₺{totalPrice.toFixed(2)}</div>
-        </div>
-        <div className="flex justify-end my-3">
-          <div className="pr-24">Gönderim:</div>
-          <div className="ml-3">₺{order.shipping_fee}</div>
-        </div>
-        <div className="flex justify-end">
-          <div className="pr-20">Sipariş toplamı:</div>
-          <div>₺{totalPriceWithShipping.toFixed(2)}</div>
+          <table className="text-right flex ">
+            <thead>
+              <tr className="">
+                <td className="pr-4 mt-2">Öğe alt toplamı:</td>
+                <td>₺{totalPrice.toFixed(2)}</td>
+              </tr>
+              <tr>
+                <td className="pr-4 mt-2">Gönderim:</td>
+                <td>₺{order.shipping_fee}</td>
+              </tr>
+              <tr>
+                <td className="pr-4 mt-2">Sipariş toplamı:</td>
+                <td>₺{totalPriceWithShipping.toFixed(2)}</td>
+              </tr>
+            </thead>
+          </table>
         </div>
       </div>
     </div>

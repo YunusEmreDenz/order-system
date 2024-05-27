@@ -117,7 +117,7 @@ export default function Home() {
           </h1>
 
           <div>
-            <div className="container border rounded border-gray-300 m-8 p-2">
+            <div className="container border rounded border-gray-300 input-area p-2">
               <div className="text-left">
                 <label htmlFor="created_at">Genel</label>
                 <div>

@@ -7,7 +7,7 @@
 }
 
 body {
-  @apply text-center flex flex-col  w-3/5  m-auto;
+  @apply text-center flex flex-col  w-4/5  m-auto;
   height: 95vh;
 }
 
@@ -92,3 +92,14 @@ footer {
 .container {
 @apply flex justify-between;
 } 
+
+@media (max-width:550px) {
+  .input-area{
+    @apply my-8
+  }
+}
+@media (min-width:550px) {
+  .input-area{
+    @apply m-8
+  }
+}
